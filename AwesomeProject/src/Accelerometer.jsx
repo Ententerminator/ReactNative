@@ -1,4 +1,5 @@
 import React from 'react';
+import BackButton from './BackButton'; 
 import {
   StyleSheet,
   Button,
@@ -9,6 +10,8 @@ import {
 } from 'react-native';
 
 const Accelerometer = ({navigation}) => {
+  BackButton(navigation)
+
     return (
     <View>
       <Text > Accelerometer </Text>
