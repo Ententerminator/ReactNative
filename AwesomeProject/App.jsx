@@ -5,7 +5,7 @@ import { DrawerToggleButton, createDrawerNavigator } from '@react-navigation/dra
 import { Linking, Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomeScreen from './src/HomeScreen';
-import Accelerometer from './src/AccelerometerPage';
+import Accelerometer from './src/Accelerometer';
 import Camera from './src/Camera';
 import Contacts from './src/Contacts';
 import FileAccess from './src/FileAccess';
