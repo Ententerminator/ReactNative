@@ -127,3 +127,48 @@ const ProfileScreen = ({navigation, route}) => {
       </NavigationContainer>
     );
   }
+
+
+{  values = ["x", "y", "z"]
+
+const initialValue = values.reduce((carry, val) => ({ ...carry, [val]: 0 }), {}); //hacky lösung, damit initial values auf nullg gesetzt werden
+
+carry = {}
+
+val = "x";
+
+(carry, val) => (
+    { 
+        ...carry, 
+        [val]: 0 
+    }
+)
+
+() //- mein rückgabewerte
+
+
+
+const variablestring = "linda rung";
+
+const object = {
+    age: 42,
+    "age": 42,
+    "linda rung": "irgendwas anderes"
+}
+object[variablestring] }
+useState[setSensorValues] // useState gibt ein array zurück und wir wollen 2 explizite wert: getter und setter (sensorValues und setSensorValues)
+
+const carry1 = {
+  x: 0
+}
+
+const carry2 = {
+  x: 0,
+  y: 0
+}
+
+const carry3 = {
+  x: 0,
+  y: 0,
+  z: 0
+}
