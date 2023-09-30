@@ -172,3 +172,29 @@ const carry3 = {
   y: 0,
   z: 0
 }
+
+
+//PERMISSIONS
+
+const requestLocationPermission = async () => {
+  try {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      {
+        title: 'Geolocation Permission',
+        message:
+          'May we inquire the whereabouts of thine castle?',
+        buttonNeutral: 'Too soon',
+        buttonNegative: 'No way?',
+        buttonPositive: 'Sure Thang',
+      },
+    );
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      console.log('Thou can use mine location');
+    } else {
+      console.log('NaBro');
+    }
+  } catch (err) {
+    console.warn(err);
+  }
+};
