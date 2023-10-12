@@ -3,10 +3,13 @@ import {
     StyleSheet,
     Button,
     View,
-    SafeAreaView,
+    Vibration,
     Text,
     Alert,
+    PermissionsAndroid
   } from 'react-native';
+
+
 
 const BackButton = (navigation) => {
     React.useEffect(() => {
@@ -14,7 +17,10 @@ const BackButton = (navigation) => {
         // Now the button includes an `onPress` handler to update the count
         navigation.setOptions({
           headerLeft: () => (
-            <Button onPress={() => navigation.navigate('Home')} title="Back Up Fam" />
+            <Button onPress={() => {
+              Vibration.vibrate(50), 
+              navigation.navigate('Home')}} 
+              title="Back Up Fam" />
           ),
         });
       }, [navigation]);

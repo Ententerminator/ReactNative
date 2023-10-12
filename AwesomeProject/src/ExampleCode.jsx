@@ -219,3 +219,25 @@ PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
   .catch((error) => {
       console.error('Permission error: ', error);
   });
+
+
+  // VIBRATION 
+  PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.VIBRATE, {
+    title: 'Vibrate',
+    message: 'This app would like to view your Vibration.',
+    buttonPositive: 'Please accept bare mortal',
+  })
+    .then((res) => {
+        console.log('Permission: ', res);
+        Contacts.getAll()
+            .then((contacts) => {
+                // work with contacts
+                console.log(contacts);
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+    })
+    .catch((error) => {
+        console.error('Permission error: ', error);
+    });
