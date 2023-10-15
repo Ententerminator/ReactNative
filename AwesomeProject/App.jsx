@@ -20,7 +20,10 @@ import {
   Alert,
   TouchableOpacity,
   ActivityIndicator,
+  AppState
 } from 'react-native';
+import Snackbar from "react-native-snackbar"
+
 
 const PERSISTENCE_KEY = 'NAVIGATION_STATE_V1';
 
@@ -54,6 +57,18 @@ const YourApp = () => {
     if (!isReady) {
       restoreState();
     }
+
+    const handleChange = AppState.addEventListener("focus", () => { 
+      Snackbar.show({
+        text: 'Welcome Back',
+        duration: Snackbar.LENGTH_SHORT,
+      });
+    }); 
+
+    return () => { 
+      handleChange.remove(); 
+    };
+
   }, [isReady]);
 
   if (!isReady) {
