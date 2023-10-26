@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import BackButton from './BackButton'; 
 import Contacts, { deleteContact } from 'react-native-contacts';
+import CustomButton from './CustomButton';
+import styles from './style';
 import {
   StyleSheet,
   Button,
@@ -96,7 +98,7 @@ const ContactsPage = ({navigation}) => {
   }
 
     return (
-    <View>
+    <View style={styles.viewStyle}>
       <Text > Contacts </Text>
       <Button title="Make Contact" onPress={insertContact} />
       <FlatList

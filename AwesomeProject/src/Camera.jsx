@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import BackButton from './BackButton'; 
 import { Camera, useCameraPermission, useCameraDevice } from 'react-native-vision-camera'
 import { CameraRoll } from "@react-native-camera-roll/camera-roll";
-
+import styles from './style';
 import {
   StyleSheet,
   Button,

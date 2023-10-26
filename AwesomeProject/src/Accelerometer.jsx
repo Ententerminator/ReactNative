@@ -1,5 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import BackButton from './BackButton'; 
+import styles from './style';
 import { accelerometer,
          setUpdateIntervalForType,
         SensorTypes } from 'react-native-sensors';
@@ -38,11 +39,18 @@ const Accelerometer = ({navigation}) => {
     }, []);
 
     return (
-    <View>
-      <Text > Accelerometer </Text>
-      <Text> x: {sensorValues.x} </Text>
-      <Text> y: {sensorValues.y} </Text>
-      <Text> z: {sensorValues.z} </Text>
+    <View style={[styles.viewStyle, styles.viewLiveRow]}>
+      <View style={styles.viewLiveColumn}>
+        <Text style={styles.textLiveData}> x Axis:  </Text>
+        <Text style={styles.textLiveData}> y Axis:  </Text>
+        <Text style={styles.textLiveData}> z Axis:  </Text>
+      </View>
+      <View style={styles.viewLiveColumn}>
+        <Text style={styles.textLiveData}> {sensorValues.x.toFixed(5)} </Text>
+        <Text style={styles.textLiveData}> {sensorValues.y.toFixed(5)} </Text>
+        <Text style={styles.textLiveData}> {sensorValues.z.toFixed(5)} </Text>
+      </View>
+      
     </View>
     );
   }

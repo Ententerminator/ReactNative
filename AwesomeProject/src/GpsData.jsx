@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import Geolocation, { clearWatch } from 'react-native-geolocation-service';
 import BackButton from './BackButton'; 
+import styles from './style';
 import {
   StyleSheet,
   Button,
@@ -52,10 +53,15 @@ const GpsData = ({navigation}) => {
   }, []);
 
     return (
-    <View>
-      <Text > GpsData </Text>
-      <Text> latitude: {location.latitude} </Text>
-      <Text> longitude: {location.longitude} </Text>
+    <View style={[styles.viewStyle, styles.viewLiveRow]}>
+      <View style={styles.viewLiveColumn}>
+        <Text style={styles.textLiveData}> Latitude: </Text>
+        <Text style={styles.textLiveData}> Longitude: </Text>
+      </View>
+      <View style={styles.viewLiveColumn}>
+        <Text style={styles.textLiveData}> {location.latitude} </Text>
+        <Text style={styles.textLiveData}> {location.longitude} </Text>
+      </View>
     </View>
     );
   }

@@ -1,5 +1,6 @@
 import React, {Component, useEffect, useState} from 'react';
 import BackButton from './BackButton'; 
+import styles from './style';
 import {
   StyleSheet,
   Button,

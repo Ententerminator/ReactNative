@@ -6,8 +6,10 @@ import {
     Vibration,
     Text,
     Alert,
-    PermissionsAndroid
+    PermissionsAndroid,
   } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons"
 
 
 
@@ -17,10 +19,25 @@ const BackButton = (navigation) => {
         // Now the button includes an `onPress` handler to update the count
         navigation.setOptions({
           headerLeft: () => (
-            <Button onPress={() => {
-              Vibration.vibrate(50), 
-              navigation.navigate('Home')}} 
-              title="Back Up Fam" />
+            // <Button onPress={() => {
+            //   Vibration.vibrate(50), 
+            //   navigation.navigate('Homepage')}} 
+            //   title="Back Up Fam" />
+            <TouchableOpacity
+              onPress={() => {
+                Vibration.vibrate(50), 
+                navigation.navigate('Homepage')}}
+            >
+              <MaterialIconsIcon 
+                name="arrow-back"
+                color="white"
+                size={23}
+                style={{
+                  left: 17,
+                }}
+              />
+            </TouchableOpacity>
+
           ),
         });
       }, [navigation]);

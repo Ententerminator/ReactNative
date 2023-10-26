@@ -2,6 +2,8 @@ import React, {useState, useCallback, useEffect} from 'react';
 import BackButton from './BackButton';
 import DocumentPicker from 'react-native-document-picker';
 import RNFS from 'react-native-fs';
+import CustomButton from './CustomButton';
+import styles from './style';
 import {
   StyleSheet,
   Button,
@@ -134,7 +136,7 @@ const FileAccess = ({navigation}) => {
   }, []);
 
     return (
-    <View>
+    <View style={styles.viewStyle}>
       <Text>External storage: {externalDirectory}</Text>
       <Text>File Path: {filePath}</Text>
       {/* show only newest item */}

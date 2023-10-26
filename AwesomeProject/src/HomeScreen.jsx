@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './style'
 import {
   StyleSheet,
   Button,
@@ -6,66 +7,45 @@ import {
   SafeAreaView,
   Text,
   Alert,
-  Vibration
+  Vibration,
+  TouchableOpacity
 } from 'react-native';
+
+
+const HomepageButton = ({
+  title,
+  navigation
+}) => {
+  return (
+    <TouchableOpacity
+      onPress={() =>
+        {
+          Vibration.vibrate(50);
+          navigation.navigate(title);
+        }
+      }
+      style={[styles.button, styles.homepageButton]}
+    >
+    <Text style={styles.textStyle}> {title} </Text>
+    </TouchableOpacity>
+  );
+}
 
 const HomeScreen = ({navigation}) => {
   return (
-  <View>
-    <Button
-      title="Accelerometer"
-      onPress={() =>
-        {
-          Vibration.vibrate(50),
-          navigation.navigate('Accelerometer')
-          }
-      }
-    />
-    <Button
-      title="Camera"
-      onPress={() =>
-        {
-          Vibration.vibrate(50),
-        navigation.navigate('Camera')
-        }
-      }
-    />
-    <Button
-      title="Contacts"
-      onPress={() =>
-        {
-          Vibration.vibrate(50),
-        navigation.navigate('Contacts')
-        }
-      }
-    />
-    <Button
-      title="FileAccess"
-      onPress={() =>
-        {
-          Vibration.vibrate(50),
-        navigation.navigate('FileAccess')
-        }
-      }
-    />
-    <Button
-      title="GpsData"
-      onPress={() =>
-        {
-          Vibration.vibrate(50),
-        navigation.navigate('GpsData')
-        }
-      }
-    />
-    <Button
-      title="RetrieveData"
-      onPress={() =>
-        {
-          Vibration.vibrate(50),
-        navigation.navigate('RetrieveData')
-        }
-      }
-    />
+  <View style = {[styles.viewStyle]}>
+    <View style={styles.viewRow}>
+      <HomepageButton title="Accelerometer" navigation= {navigation} />
+      <HomepageButton title="Camera" navigation= {navigation} />
+    </View>
+    <View style={styles.viewRow}>
+      <HomepageButton title="Contacts" navigation= {navigation} />
+      <HomepageButton title="FileAccess" navigation= {navigation} />
+    </View>
+    <View style={styles.viewRow}>
+      <HomepageButton title="GpsData" navigation= {navigation} />
+      <HomepageButton title="RetrieveData" navigation= {navigation} />
+    </View>
   </View>
   );
 }
