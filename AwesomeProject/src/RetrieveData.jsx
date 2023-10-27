@@ -39,7 +39,7 @@ const RetrieveData = ({navigation}) => {
   }, []);
 
   return (
-    <View style={[styles.viewStyle, {alignItems: 'center'}]}>
+    <View style={[styles.viewStyle]}>
       <ScrollView
         refreshControl={
           <RefreshControl 

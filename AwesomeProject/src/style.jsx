@@ -51,6 +51,18 @@ import {
         color: 'white'
     },
 
+    textInput: {    //TODO ausmisten? bordercolor etc
+        height: 60, 
+        width: 250, 
+        borderWidth: 1,
+        borderColor: 'black', 
+        alignSelf: 'center', 
+        fontSize: 18, 
+        marginTop: 20, 
+        fontFamily: 'serif', 
+        paddingLeft: 10
+    },
+
     drawerText: {
         fontFamily: 'serif',
         fontSize: 15,
@@ -67,8 +79,13 @@ import {
 
     button: {
         backgroundColor: 'rgba(0, 80, 255, 1)',
+        borderRadius: 5,
+        width: 250,
+        height: 60,
+        marginTop: 20,
         justifyContent: 'center',
-        borderRadius: 5
+        alignSelf: 'center',
+        alignItems: 'center'
     },
 
     homepageButton: {
@@ -84,7 +101,8 @@ import {
     retrieveDataImage: {
         width: 400, 
         height: 500, 
-        resizeMode: 'contain'
+    resizeMode: 'contain', //TODO braucht man
+        alignSelf: 'center'
     },
 
     cameraText: {

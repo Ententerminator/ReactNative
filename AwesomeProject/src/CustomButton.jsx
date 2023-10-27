@@ -10,22 +10,21 @@ import {
   Vibration,
   TouchableOpacity
 } from 'react-native';
-import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-
 
 const CustomButton = ({ 
     onPress,
     title,
-    icon
+    icon,
+    buttonStyle,
+    textStyle
 }) => {
     return(
     <TouchableOpacity
-    style={{flexDirection: 'row'}}
+    style={[buttonStyle,{flexDirection: 'row'}]}
         onPress={onPress}
     >
         {icon}
-        <Text> {title} </Text>
+        <Text style={textStyle}> {title} </Text>
     </TouchableOpacity>
 
 );
