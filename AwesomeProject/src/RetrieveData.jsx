@@ -39,16 +39,23 @@ const RetrieveData = ({navigation}) => {
   }, []);
 
   return (
-    <View style={{flex: 1, padding: 24, justifyContent: 'center', alignItems: 'center'}}>
+    <View style={[styles.viewStyle, {alignItems: 'center'}]}>
       <ScrollView
         refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={getDog}/> 
+          <RefreshControl 
+          colors={[styles.colors.foregroundColor]}
+            refreshing={refreshing} 
+            onRefresh={getDog}
+          /> 
         }>
         {isLoading ? (
-          <ActivityIndicator />
+          <ActivityIndicator/>
         ) : (
           <View>
-          <Image source={{uri: data}} style={{ width: 400, height: 500, resizeMode: 'contain'}}/>
+            <Image 
+              source={{uri: data}} 
+              style={styles.retrieveDataImage}
+            />
           </View>
         )}
       </ScrollView>

@@ -81,6 +81,12 @@ import {
         width: 160,
     },
 
+    retrieveDataImage: {
+        width: 400, 
+        height: 500, 
+        resizeMode: 'contain'
+    },
+
 
     });
 
