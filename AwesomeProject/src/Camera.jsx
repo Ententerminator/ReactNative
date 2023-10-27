@@ -12,6 +12,8 @@ import {
   Alert,
   Image,
 } from 'react-native';
+import CustomButton from './CustomButton';
+import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 
 
 
@@ -22,7 +24,7 @@ const CameraPage = ({navigation}) => {
   const camera = useRef(null)
 
 
-  const device = useCameraDevice('back')
+  const device = useCameraDevice('back', sensorOrientation='landscape-left')
 
   const onPhotoButton = async() => {
     console.log("1");
@@ -40,44 +42,47 @@ const CameraPage = ({navigation}) => {
   if (device == null) return <NoCameraDeviceError />
   return (
     <View
-    style={{
-      flex:1,
-      height: '100%',
-      width: '100%',
-    }}>
+      style={{height: '100%'}}>
+      
       <Camera
         style={StyleSheet.absoluteFill}
         device={device}
         isActive={true}
         ref={camera}
         photo={true}
-        
+        orientation='portrait'
       />
-      <View
-      style={{
-        position: 'absolute',
-        bottom: 50,
-        alignSelf: 'center'
-      }}>
-      <Button 
-        title = "Tak a PICTA"
-        color='#fffffff'
-        onPress={onPhotoButton}
-
-      />
+      <View>
+        <Text 
+          style={[
+            styles.textStyle,
+            styles.cameraText,
+            {backgroundColor:styles.colors.foregroundColor}
+          ]}
+        > 
+          Take a Picture! :)
+        </Text>
       </View>
       <View
-      style={{
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        alignSelf: 'start'
-      }}>
-      <Image 
-        source={{uri: 'file://' + photoPath}} style={{ width: 100, height: 100, resizeMode: 'contain'}}
-      />
+      style={styles.cameraButtonPosition}>
+        <CustomButton 
+          icon={
+            <FontAwesomeIcon
+                 name="camera" 
+                 size = {20} 
+                 color= 'white'
+              />
+          }
+          onPress={onPhotoButton}
+        />
       </View>
-
+      <View
+        style={styles.cameraPreviewImagePosition}>
+        <Image 
+          source={{uri: 'file://' + photoPath}} 
+          style={styles.cameraPreviewImage}
+        />
+      </View>
     </View>
   )
 }

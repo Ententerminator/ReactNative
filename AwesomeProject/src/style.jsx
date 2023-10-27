@@ -87,6 +87,33 @@ import {
         resizeMode: 'contain'
     },
 
+    cameraText: {
+        height:30,
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+
+    cameraButtonPosition: {
+        position: 'absolute',
+        bottom: 40,
+        alignSelf: 'center',
+        right: 50
+    },
+
+    cameraPreviewImagePosition: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        alignSelf: 'start'
+    },
+
+    cameraPreviewImage: {
+        width: 100, 
+        height: 100, 
+        resizeMode: 'contain', 
+        borderRadius:40
+    },
+
 
     });
 
