@@ -1,12 +1,4 @@
-import {
-    StyleSheet,
-    Button,
-    View,
-    SafeAreaView,
-    Text,
-    Alert,
-    Image,
-  } from 'react-native';
+import {StyleSheet} from 'react-native';
 
   const styles = StyleSheet.create({
 
@@ -36,6 +28,23 @@ import {
         flexDirection: 'column', 
     },
 
+    viewContactRow: {
+        flexDirection: 'row', 
+        marginVertical: 5, 
+        alignItems: 'center',
+    },
+
+    viewContactLetter: {
+        width: 25, 
+        marginHorizontal: 6
+    },
+    
+    viewContactText: {
+        flex: 1, 
+        flexWrap: 'wrap', //nur needed wegen telephonnummer, wenn alles in einer reihe gehts auch ohne
+        flexDirection: 'row'
+    },
+
     textLiveData: {
         fontFamily: 'serif',
         fontSize: 20,
@@ -49,6 +58,22 @@ import {
         fontSize: 18,
         textAlign: "center",
         color: 'white'
+    },
+
+    textContacts: {
+        fontFamily: 'serif',
+        fontSize: 15,
+        fontWeight: 'bold',
+    },
+
+    letterStyle: {
+        fontWeight: 'bold',
+        fontFamily: 'serif',
+        fontSize: 18,
+        color: 'white',
+        backgroundColor: 'rgba(49, 216, 99, 1)',
+        borderRadius: 20,
+        textAlign: 'center'
     },
 
     textInput: {    //TODO ausmisten? bordercolor etc
@@ -98,10 +123,23 @@ import {
         width: 160,
     },
 
+    deleteButton: {
+        width: 80,
+        height: 30,
+        backgroundColor: 'rgba(245, 65, 52, 1)',
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        // position: 'absolute',
+        // marginLeft: '77%',
+        // marginRight: '3%',
+        alignSelf: 'center'
+    },
+
     retrieveDataImage: {
         width: 400, 
         height: 500, 
-    resizeMode: 'contain', //TODO braucht man
+        resizeMode: 'contain', //TODO braucht man
         alignSelf: 'center'
     },
 

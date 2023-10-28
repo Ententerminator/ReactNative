@@ -13,6 +13,8 @@ import {
   PermissionsAndroid,
   FlatList,
 } from 'react-native';
+import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons"
+
 
 
 //braucht man doch!
@@ -73,15 +75,37 @@ const ContactsPage = ({navigation}) => {
   };
 
   const renderItem = ({item, index}) => {
+    var colors = ['#9999FF', '#6B7DB3', '#BB99FF', '#6BB3B3']
+    var color = colors[Math.floor(Math.random() * colors.length)]
     return (
-      <View style={{flexDirection: 'row'}}>
-        <Text>{item.givenName[0]} </Text>
-        <Text>{item.givenName}  {item.familyName}</Text>
-        <Text> {item.phoneNumbers[0]?.number} </Text>        
-        <Button title="Delete" onPress= {() => {
-          Contacts.deleteContact(item)
-          refreshContacts() 
-          }}/>
+      <View 
+        style={styles.viewContactRow}>
+        <View style={styles.viewContactLetter}>
+          <Text style={[styles.letterStyle, {backgroundColor: color}]}>{item.givenName[0].toUpperCase()}</Text>          
+        </View>
+        <View style={styles.viewContactText}>
+          <Text style={styles.textContacts}>{item.givenName} {item.familyName}</Text>
+          <Text style={styles.textContacts}> {item.phoneNumbers[0]?.number}</Text> 
+          {/* phonenumber muss extra text sein, damits zusammen bleibt, wenn wrap */}
+        </View>     
+        <View style={{width: 100}}>
+          <CustomButton 
+            icon={
+              <MaterialIconsIcon
+                name="delete" 
+                color="white"
+                size = {18} 
+              />
+            }
+            title="Delete" 
+            onPress= {() => {
+              Contacts.deleteContact(item)
+              refreshContacts() 
+            }}
+            buttonStyle={styles.deleteButton}
+            textStyle={[styles.textStyle,{fontSize: 15}]}
+          />
+        </View>
       </View>
     );
   };
@@ -99,9 +123,13 @@ const ContactsPage = ({navigation}) => {
 
     return (
     <View style={styles.viewStyle}>
-      <Text > Contacts </Text>
-      <Button title="Make Contact" onPress={insertContact} />
-      <FlatList
+      <CustomButton 
+        title="New Contact" 
+        onPress={insertContact} 
+        buttonStyle={styles.button}
+        textStyle={styles.textStyle}
+      />
+      <FlatList style={{marginTop: 20}}
       data={contacts}
       renderItem={renderItem}
       keyExtractor={keyExtractor}
