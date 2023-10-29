@@ -1,21 +1,9 @@
 import React from 'react';
 import styles from './style'
-import {
-  StyleSheet,
-  Button,
-  View,
-  SafeAreaView,
-  Text,
-  Alert,
-  Vibration,
-  TouchableOpacity
-} from 'react-native';
+import { View, Text, Vibration, TouchableOpacity} from 'react-native';
 
 
-const HomepageButton = ({
-  title,
-  navigation
-}) => {
+const HomepageButton = ({ title, navigation }) => {
   return (
     <TouchableOpacity
       onPress={() =>
@@ -26,7 +14,7 @@ const HomepageButton = ({
       }
       style={[styles.button, styles.homepageButton]}
     >
-    <Text style={styles.textStyle}> {title} </Text>
+      <Text style={styles.textStyle}> {title} </Text>
     </TouchableOpacity>
   );
 }
@@ -50,4 +38,4 @@ const HomeScreen = ({navigation}) => {
   );
 }
 
-  export default HomeScreen;
+export default HomeScreen;

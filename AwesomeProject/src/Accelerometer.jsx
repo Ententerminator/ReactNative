@@ -1,44 +1,34 @@
 import React, {useState, useRef, useEffect} from 'react';
 import BackButton from './BackButton'; 
 import styles from './style';
-import { accelerometer,
-         setUpdateIntervalForType,
-        SensorTypes } from 'react-native-sensors';
-import {
-  StyleSheet,
-  Button,
-  View,
-  SafeAreaView,
-  Text,
-  Alert,
-} from 'react-native';
+import { accelerometer, setUpdateIntervalForType, SensorTypes } from 'react-native-sensors';
+import {View, Text} from 'react-native';
 
 setUpdateIntervalForType(SensorTypes.accelerometer, 400); // defaults to 100ms
 
 const Accelerometer = ({navigation}) => {
-  BackButton(navigation)
+  BackButton(navigation);
 
-  const initialValue = {
+  const initialValue = { //4 zeilen
     x: 0,
     y: 0,
     z: 0
   }
-//sensor[accelerometer]
-    const [sensorValues, setSensorValues] = useState(initialValue);
-    const sensorSubscriptionRef = useRef();
+  const [sensorValues, setSensorValues] = useState(initialValue);
+  const sensorSubscriptionRef = useRef();
 
-    useEffect(() => {
-      sensorSubscriptionRef.current = accelerometer.subscribe((values) => {
-        setSensorValues({ ...values });
-      });
+  useEffect(() => {
+    sensorSubscriptionRef.current = accelerometer.subscribe(  // 2 zeilen
+      (values) => {setSensorValues({ ...values });}
+    );
 
-      return () => {
-        sensorSubscriptionRef.current.unsubscribe();
-        sensorSubscriptionRef.current = null;
-      };
-    }, []);
+    return () => {              // 3 zeilen
+      sensorSubscriptionRef.current.unsubscribe();
+      sensorSubscriptionRef.current = null;
+    };
+  });
 
-    return (
+  return (
     <View style={[styles.viewStyle, styles.viewLiveRow]}>
       <View style={styles.viewLiveColumn}>
         <Text style={styles.textLiveData}> x Axis:  </Text>
@@ -55,4 +45,4 @@ const Accelerometer = ({navigation}) => {
     );
   }
 
-  export default Accelerometer;
+  export default Accelerometer; // wird gezählt

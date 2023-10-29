@@ -1,19 +1,26 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import Geolocation, { clearWatch } from 'react-native-geolocation-service';
 import BackButton from './BackButton'; 
 import styles from './style';
-import {
-  StyleSheet,
-  Button,
-  View,
-  SafeAreaView,
-  Text,
-  Alert,
-  PermissionsAndroid,
-} from 'react-native';
+import { View, Text, PermissionsAndroid } from 'react-native';
+
+
+PermissionsAndroid.request(
+  PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+  {
+    title: 'Geolocation Permission',
+    message: 'May we inquire the whereabouts of thine castle?',
+    buttonNeutral: 'Too soon',
+    buttonNegative: 'No way?',
+    buttonPositive: 'Sure Thang',
+  }
+  ).catch ((err) => {
+    console.warn(err);
+  }
+);
 
 const GpsData = ({navigation}) => {
-  BackButton(navigation)
+  BackButton(navigation);
 
   const initialValue = {
     latitude: 0,
@@ -32,7 +39,6 @@ const GpsData = ({navigation}) => {
         }) 
       }, 
       (error) => {
-        // See error code charts below.
         console.log(error.code, error.message);
       },
       {
@@ -44,7 +50,6 @@ const GpsData = ({navigation}) => {
   }
 
   useEffect(() => {
-
     watchID = getPosition();
 
     return () => {
