@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {CurrentRenderContext, NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import { DrawerToggleButton, createDrawerNavigator } from '@react-navigation/drawer';
 import { Linking, Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -12,25 +12,14 @@ import FileAccess from './src/FileAccess';
 import GpsData from './src/GpsData';
 import RetrieveData from './src/RetrieveData';
 import styles from './src/style';
-import {
-  StyleSheet,
-  Button,
-  View,
-  SafeAreaView,
-  Text,
-  Alert,
-  TouchableOpacity,
-  ActivityIndicator,
-  AppState
-} from 'react-native';
+import { Button, ActivityIndicator, AppState } from 'react-native';
 import Snackbar from "react-native-snackbar";
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons"
+import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
 
 
 const PERSISTENCE_KEY = 'NAVIGATION_STATE_V1';
-
 
 const Drawer = createDrawerNavigator();
 
@@ -47,7 +36,7 @@ const YourApp = () => {
         if (Platform.OS !== 'web' && initialUrl == null) {
           // Only restore state if there's no deep link and we're not on web
           const savedStateString = await AsyncStorage.getItem(PERSISTENCE_KEY);
-          const state = savedStateString ? JSON.parse(savedStateString) : undefined;
+          const state = savedStateString ? JSON.parse(savedStateString) : undefined; //bleibt in einer zeile
 
           if (state !== undefined) {
             setInitialState(state);
@@ -66,44 +55,37 @@ const YourApp = () => {
       Snackbar.show({
         text: 'Welcome Back',
         duration: Snackbar.LENGTH_SHORT,
-        //fontFamily: 'serif', //muss eingefügt werden in ./assets/fonts und geht nur in android?
         backgroundColor: 'rgba(0, 80, 255, 1)',
       });
     }); 
 
-    return () => { 
-      handleChange.remove(); 
+    return () => {            // wird gezählt
+      handleChange.remove();  // wird gezählt
     };
+  }, [isReady]); // wird auch als eine zeile gezählt
 
-  }, [isReady]);
-
-  if (!isReady) {
-    return <ActivityIndicator />;
-  }
-
-
-
+  if (!isReady) {                 //  wird gezählt
+    return <ActivityIndicator />; //  wird gezählt
+  }                               //  nicht gezählt
 
 
   return (
     <NavigationContainer
     initialState={initialState}
-    onStateChange={(state) => AsyncStorage.setItem(PERSISTENCE_KEY, JSON.stringify(state))}>
+    onStateChange={
+      (state) => AsyncStorage.setItem(PERSISTENCE_KEY, JSON.stringify(state))
+    }>
       <Drawer.Navigator 
         initialRouteName="Homepage"
         backBehavior='history'
         screenOptions={{
-          headerStyle: {
-            backgroundColor: styles.colors.foregroundColor,
-          },
+          headerStyle: {backgroundColor: styles.colors.foregroundColor},
           headerTintColor: styles.textStyle.color,
-          headerTitleStyle: {
-            fontFamily: styles.textStyle.fontFamily,
-          },
+          headerTitleStyle: {fontFamily: styles.textStyle.fontFamily},
 
           headerTitleAlign: 'center',
-
           //headerShown: true, - standardmäßig auf true
+
           //drawer stuff
           drawerPosition: 'right',
           drawerActiveTintColor: styles.colors.foregroundColor,
@@ -111,9 +93,7 @@ const YourApp = () => {
           drawerActiveBackgroundColor: null, //keine highlight farbe beim ausgewählten
           drawerLabelStyle: styles.drawerText,
 
-          drawerStyle: {
-            backgroundColor: styles.colors.backgroundColor
-          },
+          drawerStyle: {backgroundColor: styles.colors.backgroundColor},
 
           headerLeft: () => <Button title="Go back"/>,
           headerRight: () => <DrawerToggleButton tintColor='white' />,
@@ -127,7 +107,7 @@ const YourApp = () => {
             drawerIcon: ({focused, size}) => (
               <EntypoIcon
                  name="home" 
-                 size = {size} 
+                 size={size} 
                  color={focused ? styles.colors.foregroundColor : null}
                  style={styles.drawerIcon}
               />
@@ -135,13 +115,13 @@ const YourApp = () => {
             headerLeft: false
           }}
         />
-        <Drawer.Screen name="Accelerometer" 
-          component={Accelerometer} 
-          options={{
-            drawerLabel: 'Accelerometer',
-        }}
-          />
-        <Drawer.Screen name="Camera" 
+        <Drawer.Screen 
+          name="Accelerometer"
+          component={Accelerometer}
+          options={{drawerLabel: 'Accelerometer'}}
+        />
+        <Drawer.Screen 
+          name="Camera" 
           component={Camera} 
           options={{
             drawerLabel: 'Camera',
@@ -149,15 +129,16 @@ const YourApp = () => {
             drawerIcon: ({focused, size}) => (
               <FontAwesomeIcon
                  name="camera" 
-                 size = {size} 
+                 size={size} 
                  color={focused ? styles.colors.foregroundColor : null}
                  style={styles.drawerIcon}
               />
             ),
           }}
         />
-        <Drawer.Screen name="Contacts" 
-        component={Contacts} 
+        <Drawer.Screen 
+          name="Contacts" 
+          component={Contacts} 
           options={{
             drawerLabel: 'Contacts',
             drawerItemStyle: styles.drawerItemWithIcon,
@@ -171,8 +152,9 @@ const YourApp = () => {
             ),
           }}
         />
-        <Drawer.Screen name="FileAccess" 
-        component={FileAccess} 
+        <Drawer.Screen 
+          name="FileAccess" 
+          component={FileAccess} 
           options={{
             drawerLabel: 'FileAccess',
             drawerItemStyle: styles.drawerItemWithIcon,
@@ -186,8 +168,9 @@ const YourApp = () => {
             ),
           }}
         />
-        <Drawer.Screen name="GpsData" 
-        component={GpsData} 
+        <Drawer.Screen 
+          name="GpsData" 
+          component={GpsData} 
           options={{
             drawerLabel: 'GpsData',
             drawerItemStyle: styles.drawerItemWithIcon,
@@ -201,12 +184,11 @@ const YourApp = () => {
             ),
           }}
         />
-        <Drawer.Screen name="RetrieveData" 
-        component={RetrieveData} 
-          options={{
-            drawerLabel: 'RetrieveData'}}
+        <Drawer.Screen 
+          name="RetrieveData" 
+          component={RetrieveData} 
+          options={{drawerLabel: 'RetrieveData'}}
         />
-        
       </Drawer.Navigator>
     </NavigationContainer>
   );

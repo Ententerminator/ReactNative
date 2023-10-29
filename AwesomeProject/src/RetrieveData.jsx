@@ -1,26 +1,16 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import BackButton from './BackButton'; 
 import styles from './style';
-import {
-  StyleSheet,
-  Button,
-  View,
-  RefreshControl,
-  Text,
-  ActivityIndicator,
-  ScrollView,
-  Image
-} from 'react-native';
+import { View, RefreshControl, ActivityIndicator, ScrollView, Image} from 'react-native';
 
 const RetrieveData = ({navigation}) => {
-  BackButton(navigation)
+  BackButton(navigation);
 
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [refreshing, setRefreshing] = React.useState(false);
 
   const getDog = async () => {
-    console.log("getDog");
     try {
       setRefreshing(true);
       const response = await fetch('https://dog.ceo/api/breeds/image/random');
@@ -43,14 +33,14 @@ const RetrieveData = ({navigation}) => {
       <ScrollView
         refreshControl={
           <RefreshControl 
-          colors={[styles.colors.foregroundColor]}
+            colors={[styles.colors.foregroundColor]}
             refreshing={refreshing} 
             onRefresh={getDog}
           /> 
         }>
         {isLoading ? (
           <ActivityIndicator/>
-        ) : (
+        ) : ( //nicht mitzählen
           <View>
             <Image 
               source={{uri: data}} 

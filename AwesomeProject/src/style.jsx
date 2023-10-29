@@ -8,7 +8,7 @@ import {StyleSheet} from 'react-native';
     },
 
     viewStyle: {
-        backgroundColor: 'rgba(238, 238, 238, 1)', //238 238 238
+        backgroundColor: 'rgba(238, 238, 238, 1)',
         height: '100%',
     },
 
@@ -54,7 +54,7 @@ import {StyleSheet} from 'react-native';
     },
 
     textStyle: {
-        fontFamily: 'serif',    //TODO times new roman, oder in flutter auf serif ändern - einfach serifen schrift als angabe?
+        fontFamily: 'serif',
         fontSize: 18,
         textAlign: "center",
         color: 'white'
@@ -76,7 +76,7 @@ import {StyleSheet} from 'react-native';
         textAlign: 'center'
     },
 
-    textInput: {    //TODO ausmisten? bordercolor etc
+    textInput: {
         height: 60, 
         width: 250, 
         borderWidth: 1,
@@ -93,8 +93,8 @@ import {StyleSheet} from 'react-native';
         fontSize: 15,
     },
 
-    drawerItemWithIcon: {
-        left: -30,
+    drawerItemWithIcon: {   // wird gezählt
+        left: -30,          // wird gezählt
     },
 
     drawerIcon: {
@@ -118,11 +118,6 @@ import {StyleSheet} from 'react-native';
         width: 160,
     },
 
-    customButton: {
-        height: 90,
-        width: 160,
-    },
-
     deleteButton: {
         width: 80,
         height: 30,
@@ -130,9 +125,6 @@ import {StyleSheet} from 'react-native';
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
-        // position: 'absolute',
-        // marginLeft: '77%',
-        // marginRight: '3%',
         alignSelf: 'center'
     },
 

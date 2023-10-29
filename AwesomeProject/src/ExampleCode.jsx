@@ -241,3 +241,28 @@ PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.READ_CONTACTS, {
     .catch((error) => {
         console.error('Permission error: ', error);
     });
+
+    
+    const FileAccess = ({navigation}) => {
+      const [directory, setDirectory] = useState('');
+      const readDir = async () => {
+        try {
+          //create a file at filePath. Write the content data to it
+          await RNFS.readdir(RNFS.DocumentDirectoryPath)
+          .then((result) => {
+            console.log('REaDD!');
+            setDirectory(result);}
+           )
+        } catch (error) { //if the function throws an error, log it out.
+          console.log(error);
+        }
+      };
+
+    return(
+    <View>
+      <Text>File Path: {filePath}</Text> 
+      <Text>New Directory Contents: {directory[directory.length - 1]}</Text> 
+      <Button title="Read Dir" onPress={readDir} />
+    </View>
+     );
+    }
